@@ -1,0 +1,6 @@
+framework module SwiftStickerView {
+  umbrella header "SwiftStickerView-umbrella.h"
+
+  export *
+  module * { export * }
+}

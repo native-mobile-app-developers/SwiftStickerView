@@ -1,0 +1,16 @@
+PODS:
+  - SwiftStickerView (0.1.0)
+
+DEPENDENCIES:
+  - SwiftStickerView (from `../`)
+
+EXTERNAL SOURCES:
+  SwiftStickerView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SwiftStickerView: 2dbd659157e3c9481ce822be27f707cf0dcb7ae4
+
+PODFILE CHECKSUM: d8692e193439802994079e6afe2b38d220387557
+
+COCOAPODS: 1.9.3
