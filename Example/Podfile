@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SwiftStickerView_Example' do
+  pod 'SwiftStickerView', :path => '../'
+
+  target 'SwiftStickerView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
