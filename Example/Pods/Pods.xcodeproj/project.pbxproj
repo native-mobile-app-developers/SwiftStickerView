@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2292490D51CD86C88562098B8D849AB0 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669E6F2169727E28911BF5C96D3B888A /* ReplaceMe.swift */; };
 		25DC9681F415057A8AC27A9A49FBA011 /* Pods-SwiftStickerView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F55D80EE7A45A46E318DF2AF77CCC40C /* Pods-SwiftStickerView_Example-dummy.m */; };
 		319A76749614BF5D24AA77812A8C2EDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		397958E168DC4BD91343BC1FFEDCF732 /* Pods-SwiftStickerView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A06418B41477B89F83C18828EC3CDB7 /* Pods-SwiftStickerView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5642B042CCD67EA81FB755C982638B86 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		5B8A047095D3A798C14A0DE71FD4D56A /* SwiftStickerView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BFDF4CF2D04012DB940B8C12E8A6589 /* SwiftStickerView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7C7CC33DE0C189A4A0B2671F7D1D691F /* Pods-SwiftStickerView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 197909E1C51F2C43707950DFAC534C3F /* Pods-SwiftStickerView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		914BCDB225167A0F0051F5A5 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914BCDB125167A0F0051F5A5 /* StickerView.swift */; };
+		914BCDB425167D140051F5A5 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914BCDB325167D140051F5A5 /* Configuration.swift */; };
 		BB116C98166E19B782A3E4415F9CA0E2 /* Pods-SwiftStickerView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 239EEDF601D95123DDA81730ED5888B3 /* Pods-SwiftStickerView_Tests-dummy.m */; };
 		E2D3A43D0AA5DF8417C04D49FD5B091B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		FE5E18AC0240B45D0562B2EA49024CA7 /* SwiftStickerView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 652A638E542D8F9ED5907E8BB6FB84D7 /* SwiftStickerView-dummy.m */; };
@@ -40,7 +41,7 @@
 		069A25E1C6C2432165FCE40E6F9B1D66 /* SwiftStickerView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftStickerView.modulemap; sourceTree = "<group>"; };
 		128D9320C6994688FE864E30EF776A1A /* Pods-SwiftStickerView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftStickerView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		197909E1C51F2C43707950DFAC534C3F /* Pods-SwiftStickerView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftStickerView_Example-umbrella.h"; sourceTree = "<group>"; };
-		19CB044E9C5DC514271DF46498A4A418 /* SwiftStickerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftStickerView.framework; path = SwiftStickerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19CB044E9C5DC514271DF46498A4A418 /* SwiftStickerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftStickerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB985A80198D843E5EE070E1A06D6B4 /* Pods-SwiftStickerView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftStickerView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		239EEDF601D95123DDA81730ED5888B3 /* Pods-SwiftStickerView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftStickerView_Tests-dummy.m"; sourceTree = "<group>"; };
 		23DA795EB25D02B789188876CB451151 /* Pods-SwiftStickerView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftStickerView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -49,21 +50,22 @@
 		5DD035F06B262A9618A15C9A8DE48AE1 /* SwiftStickerView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftStickerView-Info.plist"; sourceTree = "<group>"; };
 		60AED002F1D64B0FB3255506C1BF3790 /* SwiftStickerView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftStickerView.debug.xcconfig; sourceTree = "<group>"; };
 		652A638E542D8F9ED5907E8BB6FB84D7 /* SwiftStickerView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftStickerView-dummy.m"; sourceTree = "<group>"; };
-		669E6F2169727E28911BF5C96D3B888A /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = SwiftStickerView/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		6A06418B41477B89F83C18828EC3CDB7 /* Pods-SwiftStickerView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftStickerView_Tests-umbrella.h"; sourceTree = "<group>"; };
 		6E44D857FC1589D3301F68A89C25DDD0 /* Pods-SwiftStickerView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SwiftStickerView_Example.modulemap"; sourceTree = "<group>"; };
 		7515E6A36E437796ACED04D61C488B69 /* Pods-SwiftStickerView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftStickerView_Example-frameworks.sh"; sourceTree = "<group>"; };
 		7BFDF4CF2D04012DB940B8C12E8A6589 /* SwiftStickerView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftStickerView-umbrella.h"; sourceTree = "<group>"; };
-		97CA67D6B0D4186ACFB93FFDA1E9C3E0 /* Pods_SwiftStickerView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SwiftStickerView_Example.framework; path = "Pods-SwiftStickerView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A2705A64723B06F01C0462FC96A0089E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		AD3ADF7171D9FF8F48FD7933312FB469 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		B077027F3C667EE6D0747F5C1BDEB5A7 /* Pods_SwiftStickerView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SwiftStickerView_Tests.framework; path = "Pods-SwiftStickerView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		914BCDB125167A0F0051F5A5 /* StickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
+		914BCDB325167D140051F5A5 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		97CA67D6B0D4186ACFB93FFDA1E9C3E0 /* Pods_SwiftStickerView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftStickerView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A2705A64723B06F01C0462FC96A0089E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AD3ADF7171D9FF8F48FD7933312FB469 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		B077027F3C667EE6D0747F5C1BDEB5A7 /* Pods_SwiftStickerView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftStickerView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B963E7488A659A858CEDF3443CB866FB /* SwiftStickerView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftStickerView-prefix.pch"; sourceTree = "<group>"; };
 		C1DF3E72D89A8963AC3551BE5BDCAF04 /* Pods-SwiftStickerView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SwiftStickerView_Tests.modulemap"; sourceTree = "<group>"; };
 		CBE6611AA5C26C08B7A691D6448FEF20 /* Pods-SwiftStickerView_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftStickerView_Tests-Info.plist"; sourceTree = "<group>"; };
 		CF2BD58E4595909C9F7A6F057C9CA133 /* SwiftStickerView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftStickerView.release.xcconfig; sourceTree = "<group>"; };
-		D18BAA77A6E0C0505AA8F8CF1C50F476 /* SwiftStickerView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = SwiftStickerView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D18BAA77A6E0C0505AA8F8CF1C50F476 /* SwiftStickerView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SwiftStickerView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D52A48A9A81C48322AD7D78745A2EAE0 /* Pods-SwiftStickerView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftStickerView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE1C0A9C6D9D0E9DE14767AB4E1F63D2 /* Pods-SwiftStickerView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftStickerView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		E3E946BCE5FFA008E65EBC68891E3DB1 /* Pods-SwiftStickerView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftStickerView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -123,7 +125,7 @@
 		2F64B04924B51086153E5A201340CFA4 /* SwiftStickerView */ = {
 			isa = PBXGroup;
 			children = (
-				669E6F2169727E28911BF5C96D3B888A /* ReplaceMe.swift */,
+				914BCDB0251679C00051F5A5 /* Source */,
 				030D6E0E48CCB45E3BC1994D267070D0 /* Pod */,
 				D53BBFEBA3AE2C5E1885D09AA985A903 /* Support Files */,
 			);
@@ -170,6 +172,15 @@
 			);
 			name = "Pods-SwiftStickerView_Tests";
 			path = "Target Support Files/Pods-SwiftStickerView_Tests";
+			sourceTree = "<group>";
+		};
+		914BCDB0251679C00051F5A5 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				914BCDB125167A0F0051F5A5 /* StickerView.swift */,
+				914BCDB325167D140051F5A5 /* Configuration.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
@@ -317,6 +328,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
+				TargetAttributes = {
+					33B4920E928A5D8C8046B1B91E892B45 = {
+						LastSwiftMigration = 1150;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -383,7 +399,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2292490D51CD86C88562098B8D849AB0 /* ReplaceMe.swift in Sources */,
+				914BCDB425167D140051F5A5 /* Configuration.swift in Sources */,
+				914BCDB225167A0F0051F5A5 /* StickerView.swift in Sources */,
 				FE5E18AC0240B45D0562B2EA49024CA7 /* SwiftStickerView-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,7 +439,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-SwiftStickerView_Tests/Pods-SwiftStickerView_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SwiftStickerView_Tests/Pods-SwiftStickerView_Tests.modulemap";
@@ -444,6 +461,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CF2BD58E4595909C9F7A6F057C9CA133 /* SwiftStickerView.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -456,7 +474,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftStickerView/SwiftStickerView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftStickerView/SwiftStickerView-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SwiftStickerView/SwiftStickerView.modulemap";
 				PRODUCT_MODULE_NAME = SwiftStickerView;
@@ -488,7 +506,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-SwiftStickerView_Example/Pods-SwiftStickerView_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SwiftStickerView_Example/Pods-SwiftStickerView_Example.modulemap";
@@ -521,7 +539,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-SwiftStickerView_Tests/Pods-SwiftStickerView_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SwiftStickerView_Tests/Pods-SwiftStickerView_Tests.modulemap";
@@ -591,8 +609,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -614,7 +631,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-SwiftStickerView_Example/Pods-SwiftStickerView_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SwiftStickerView_Example/Pods-SwiftStickerView_Example.modulemap";
@@ -700,6 +717,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 60AED002F1D64B0FB3255506C1BF3790 /* SwiftStickerView.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -712,7 +730,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftStickerView/SwiftStickerView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftStickerView/SwiftStickerView-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SwiftStickerView/SwiftStickerView.modulemap";
 				PRODUCT_MODULE_NAME = SwiftStickerView;
@@ -720,6 +738,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
