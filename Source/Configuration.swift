@@ -8,11 +8,11 @@
 import Foundation
 
 enum ButtonType {
-    case scale,rotate,flip,remove,move,stretch_left,stretch_top
+    case scale,rotate,flip,remove,move,stretch_width,stretch_height
 }
 
 enum ButtonPosition{
-    case top_left,bottom_right
+    case top_left,bottom_right,bottom_left,midle_left,midle_bottom
 }
 
 struct Button {
@@ -20,24 +20,31 @@ struct Button {
     var buttonType:ButtonType!
     var image:UIImage!
     var tintColor:UIColor!
+    var buttonSize:CGSize!
     init(buttonPosition:ButtonPosition!,
          buttonType:ButtonType!,tintColor:UIColor = .black,
-         image:UIImage = UIImage(systemName: "square.fill")!) {
+         image:UIImage = UIImage(systemName: "square.fill")!,buttonSize:CGSize = CGSize(width: 16, height: 16)) {
         self.buttonPosition = buttonPosition
         self.buttonType = buttonType
         self.image = image
         self.tintColor = tintColor
+        self.buttonSize = buttonSize
     }
 }
 
 open class Configuration {
-  
+    
     public init(){}
+    
     var activeButtons:[Button]! = [Button(buttonPosition: .top_left, buttonType: .remove,image: UIImage(systemName: "trash")!),
-                                   Button(buttonPosition: .bottom_right, buttonType: .scale,image: UIImage(systemName: "arrow.up.left.and.arrow.down.right")!)]
+                                   Button(buttonPosition: .bottom_right, buttonType: .scale,image: UIImage(systemName: "arrow.up.left.and.arrow.down.right")!),
+                                   Button(buttonPosition: .bottom_left, buttonType: .rotate,image: UIImage(systemName: "gobackward")!),
+                                   Button(buttonPosition: .midle_left, buttonType: .stretch_width,image: UIImage(systemName: "square.fill")!),
+                                   Button(buttonPosition: .midle_bottom, buttonType: .stretch_height,image: UIImage(systemName: "square.fill")!)
+    ]
     var insetMarging:CGFloat! = 16
     var boarderColor:UIColor! = .darkGray
     var borderWidth:CGFloat! = 2
-    var buttonSize:CGSize! = CGSize(width: 24, height: 24)
+    var buttonSize:CGSize! = CGSize(width: 16, height: 16)
     var minimumSize:CGFloat! = 16 * 4
 }

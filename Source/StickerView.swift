@@ -12,6 +12,9 @@ import Foundation
     func stickerViewDidRemove(_ view:StickerView)
     func stickerViewDidBeginScale(_ view:StickerView)
     func stickerViewDidChangeScale(_ view:StickerView)
+    func stickerViewDidBeginRotating(_ stickerView: StickerView)
+    func stickerViewDidChangeRotating(_ stickerView: StickerView)
+    func stickerViewDidEndRotating(_ stickerView: StickerView)
 }
 
 
@@ -28,6 +31,10 @@ import Foundation
     return CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.size.width * wScale, height: rect.size.height * hScale)
 }
 
+@inline(__always) func CGAffineTransformGetAngle(_ t:CGAffineTransform) -> CGFloat {
+    return atan2(t.b, t.a)
+}
+
 open class StickerView:UIView{
     //gestures
     private lazy var removeGesture = {
@@ -40,6 +47,22 @@ open class StickerView:UIView{
     private lazy var scaleFingureGesture = {
         return UIPinchGestureRecognizer(target: self, action: #selector(scaleFingureGesture(_:)))
     }()
+    
+    private lazy var rotateGesture = {
+        return UIPanGestureRecognizer(target: self, action: #selector(rotateGesture(_:)))
+    }()
+    
+    private lazy var rotateFingureGesture = {
+        return UIRotationGestureRecognizer(target: self, action: #selector(rotateFingureGesture(_:)))
+    }()
+    private lazy var stretchWidthGesture = {
+        return UIPanGestureRecognizer(target: self, action: #selector(stretchWidthGesture(_:)))
+    }()
+    
+    private lazy var stretchHeightGesture = {
+        return UIPanGestureRecognizer(target: self, action: #selector(stretchHeightGesture(_:)))
+    }()
+    
     
     var delegate: StickerViewDelegate!
     private var configuration: Configuration!
@@ -65,6 +88,7 @@ open class StickerView:UIView{
         boundaryView = UIView()
         
         self.addGestureRecognizer(scaleFingureGesture)
+        self.addGestureRecognizer(rotateFingureGesture)
         
         // Setup content view
         self.contentView = contentView
@@ -123,6 +147,77 @@ extension StickerView{
         break
         }
     }
+    //scretch
+    @objc func stretchWidthGesture(_ recognizer: UITapGestureRecognizer) {
+        let touchLocation = recognizer.location(in: self.superview)
+        let center = self.center
+        
+        switch recognizer.state {
+        case .began:
+            self.initialBounds = self.bounds
+            self.initialDistance = CGPointGetDistance(point1: center, point2: touchLocation)
+            if let delegate = self.delegate {
+                delegate.stickerViewDidBeginScale(self)
+            }
+        break
+        case .possible:
+        break
+        case .changed:
+            var scale = CGPointGetDistance(point1: center, point2: touchLocation) / self.initialDistance
+            let minimumScale = self.configuration.minimumSize / min(self.initialBounds.size.width, self.initialBounds.size.height)
+            scale = max(scale, minimumScale)
+            let scaledBounds = CGRectScale(self.initialBounds, wScale: scale, hScale: 1)
+            self.bounds = scaledBounds
+            self.setNeedsDisplay()
+            
+            if let delegate = self.delegate {
+                delegate.stickerViewDidChangeScale(self)
+            }
+        break
+        case .ended:
+        break
+        case .cancelled:
+        break
+        case .failed:
+        break
+        }
+    }
+    
+    @objc func stretchHeightGesture(_ recognizer: UITapGestureRecognizer) {
+        let touchLocation = recognizer.location(in: self.superview)
+        let center = self.center
+        
+        switch recognizer.state {
+        case .began:
+            self.initialBounds = self.bounds
+            self.initialDistance = CGPointGetDistance(point1: center, point2: touchLocation)
+            if let delegate = self.delegate {
+                delegate.stickerViewDidBeginScale(self)
+            }
+        break
+        case .possible:
+        break
+        case .changed:
+            var scale = CGPointGetDistance(point1: center, point2: touchLocation) / self.initialDistance
+            let minimumScale = self.configuration.minimumSize / min(self.initialBounds.size.width, self.initialBounds.size.height)
+            scale = max(scale, minimumScale)
+            let scaledBounds = CGRectScale(self.initialBounds, wScale: 1, hScale: scale)
+            self.bounds = scaledBounds
+            self.setNeedsDisplay()
+            
+            if let delegate = self.delegate {
+                delegate.stickerViewDidChangeScale(self)
+            }
+        break
+        case .ended:
+        break
+        case .cancelled:
+        break
+        case .failed:
+        break
+        }
+    }
+    
     @objc func scaleFingureGesture(_ recognizer: UIPinchGestureRecognizer) {
             let touchLocation = recognizer.location(in: self.superview)
         let center = self.center
@@ -157,7 +252,40 @@ extension StickerView{
         break
         }
     }
-    
+    @objc func rotateGesture(_ recognizer: UITapGestureRecognizer) {
+        let touchLocation = recognizer.location(in: self.superview)
+        let center = self.center
+        
+        switch recognizer.state {
+        case .began:
+            self.deltaAngle = CGFloat(atan2f(Float(touchLocation.y - center.y), Float(touchLocation.x - center.x))) - CGAffineTransformGetAngle(self.transform)
+            self.initialBounds = self.bounds
+            self.initialDistance = CGPointGetDistance(point1: center, point2: touchLocation)
+            if let delegate = self.delegate {
+                delegate.stickerViewDidBeginRotating(self)
+            }
+        case .changed:
+            let angle = atan2f(Float(touchLocation.y - center.y), Float(touchLocation.x - center.x))
+            let angleDiff = Float(self.deltaAngle) - angle
+            self.transform = CGAffineTransform(rotationAngle: CGFloat(-angleDiff))
+            
+            self.setNeedsDisplay()
+            
+            if let delegate = self.delegate {
+                delegate.stickerViewDidChangeRotating(self)
+            }
+        case .ended:
+            if let delegate = self.delegate {
+                delegate.stickerViewDidEndRotating(self)
+            }
+        default:
+            break
+        }
+    }
+    @objc func rotateFingureGesture(_ recognizer: UIRotationGestureRecognizer) {
+        self.transform = self.transform.rotated(by: recognizer.rotation)
+        recognizer.rotation = 0
+    }
 }
 //MARK: - Configuration Set Functions
 extension StickerView{
@@ -209,7 +337,7 @@ extension StickerView{
         
         let handlerView:UIImageView? = UIImageView()
         handlerView?.image = button.image
-        handlerView?.frame.size = configuration.buttonSize
+        handlerView?.frame.size = button.buttonSize
         handlerView?.tintColor = button.tintColor
         handlerView?.isUserInteractionEnabled = true
         handlerView?.backgroundColor = .white
@@ -225,8 +353,24 @@ extension StickerView{
             handlerView?.autoresizingMask = [.flexibleRightMargin, .flexibleBottomMargin]
             
             break
+        case .bottom_left:
+            
+             handlerView?.center = CGPoint(x: origin.x, y: origin.y + size.height)
+             handlerView?.autoresizingMask = [.flexibleRightMargin, .flexibleTopMargin]
+            
+            break
+        case .midle_left:
+            handlerView?.center = CGPoint(x: origin.x + size.width, y: origin.y + size.height/2)
+            handlerView?.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin,.flexibleBottomMargin]
+                break
+        case .midle_bottom:
+            handlerView?.center = CGPoint(x: origin.x + size.width/2, y: origin.y + size.height)
+            handlerView?.autoresizingMask = [.flexibleTopMargin,.flexibleLeftMargin,.flexibleRightMargin,.flexibleBottomMargin]
+                break
         case .none:
             return
+
+
         }
         
         switch button.buttonType {
@@ -236,6 +380,13 @@ extension StickerView{
         case .scale:
             handlerView?.addGestureRecognizer(scaleGesture)
             break
+        case .rotate:
+            handlerView?.addGestureRecognizer(rotateGesture)
+            break
+        case .stretch_width:
+            handlerView?.addGestureRecognizer(stretchWidthGesture)
+        case .stretch_height:
+            handlerView?.addGestureRecognizer(stretchHeightGesture)
         default :
             
             break
