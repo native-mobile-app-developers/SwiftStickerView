@@ -42,9 +42,9 @@ open class Configuration {
                                    Button(buttonPosition: .midle_left, buttonType: .stretch_width,image: UIImage(systemName: "square.fill")!),
                                    Button(buttonPosition: .midle_bottom, buttonType: .stretch_height,image: UIImage(systemName: "square.fill")!)
     ]
-    var insetMarging:CGFloat! = 16
-    var boarderColor:UIColor! = .darkGray
-    var borderWidth:CGFloat! = 2
-    var buttonSize:CGSize! = CGSize(width: 16, height: 16)
+    public var insetMarging:CGFloat! = 16
+    public var boarderColor:UIColor! = .darkGray
+    public var borderWidth:CGFloat! = 2
+    public var buttonSize:CGSize! = CGSize(width: 16, height: 16)
     var minimumSize:CGFloat! = 16 * 4
 }
