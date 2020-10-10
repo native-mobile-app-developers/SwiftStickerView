@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'SwiftStickerView'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of SwiftStickerView.'
+  s.summary          = 'SwiftStickerView for image/view move rotate scretch.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,17 +21,20 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/sachithamh/SwiftStickerView'
+  s.homepage         = 'https://github.com/native-mobile-app-developers/SwiftStickerView'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'sachithamh' => 'sachithamh@gmail.com' }
-  s.source           = { :git => 'https://github.com/sachithamh/SwiftStickerView.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/native-mobile-app-developers/SwiftStickerView.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'SwiftStickerView/Classes/**/*'
-  
+  s.swift_version = '5.0'
+  s.platforms = {
+      "ios":"13.0"
+  }
   # s.resource_bundles = {
   #   'SwiftStickerView' => ['SwiftStickerView/Assets/*.png']
   # }

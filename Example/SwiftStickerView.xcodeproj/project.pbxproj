@@ -45,7 +45,7 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		717F402D2DF22B6661819DA2 /* Pods-SwiftStickerView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStickerView_Tests.release.xcconfig"; path = "Target Support Files/Pods-SwiftStickerView_Tests/Pods-SwiftStickerView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		AE402CC2380DD326BC90FB11 /* Pods-SwiftStickerView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStickerView_Example.debug.xcconfig"; path = "Target Support Files/Pods-SwiftStickerView_Example/Pods-SwiftStickerView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		C7B609290CF6947C6AB6CBDA /* SwiftStickerView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftStickerView.podspec; path = ../SwiftStickerView.podspec; sourceTree = "<group>"; };
+		C7B609290CF6947C6AB6CBDA /* SwiftStickerView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftStickerView.podspec; path = ../SwiftStickerView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D188173DBC5DE8D6DCA34D61 /* Pods-SwiftStickerView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStickerView_Example.release.xcconfig"; path = "Target Support Files/Pods-SwiftStickerView_Example/Pods-SwiftStickerView_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
