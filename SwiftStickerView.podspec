@@ -28,8 +28,8 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'Source/**/*.swift'
-  s.swift_version = '5.0'
+  s.source_files = 'Source/*.swift'
+  s.swift_version = '4.0'
   s.platforms = {
       "ios":"13.0"
   }
