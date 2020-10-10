@@ -9,12 +9,15 @@ import Foundation
 
 /// Delegates
 @objc protocol StickerViewDelegate {
-    func stickerViewDidRemove(_ view:StickerView)
-    func stickerViewDidBeginScale(_ view:StickerView)
-    func stickerViewDidChangeScale(_ view:StickerView)
-    func stickerViewDidBeginRotating(_ stickerView: StickerView)
-    func stickerViewDidChangeRotating(_ stickerView: StickerView)
-    func stickerViewDidEndRotating(_ stickerView: StickerView)
+    @objc func stickerViewDidRemove(_ view:StickerView)
+    @objc func stickerViewDidBeginScale(_ view:StickerView)
+    @objc func stickerViewDidChangeScale(_ view:StickerView)
+    @objc func stickerViewDidBeginRotating(_ stickerView: StickerView)
+    @objc func stickerViewDidChangeRotating(_ stickerView: StickerView)
+    @objc func stickerViewDidEndRotating(_ stickerView: StickerView)
+    @objc func stickerViewDidBeginMoving(_ stickerView: StickerView)
+    @objc func stickerViewDidChangeMoving(_ stickerView: StickerView)
+    @objc func stickerViewDidEndMoving(_ stickerView: StickerView)
 }
 
 
@@ -63,6 +66,10 @@ open class StickerView:UIView{
         return UIPanGestureRecognizer(target: self, action: #selector(stretchHeightGesture(_:)))
     }()
     
+    private lazy var movFingureGesture = {
+        return UIPanGestureRecognizer(target: self, action: #selector(movFingureGesture(_:)))
+    }()
+    
     
     var delegate: StickerViewDelegate!
     private var configuration: Configuration!
@@ -75,7 +82,11 @@ open class StickerView:UIView{
        private var initialBounds = CGRect.zero
        private var initialDistance:CGFloat = 0
        private var deltaAngle:CGFloat = 0
-    
+    /**
+         *  Variables for moving view
+         */
+        private var beginningPoint = CGPoint.zero
+        private var beginningCenter = CGPoint.zero
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -89,7 +100,7 @@ open class StickerView:UIView{
         
         self.addGestureRecognizer(scaleFingureGesture)
         self.addGestureRecognizer(rotateFingureGesture)
-        
+        self.addGestureRecognizer(movFingureGesture)
         // Setup content view
         self.contentView = contentView
         self.contentView.center = CGRectGetCenter(self.bounds)
@@ -286,6 +297,29 @@ extension StickerView{
         self.transform = self.transform.rotated(by: recognizer.rotation)
         recognizer.rotation = 0
     }
+    @objc func movFingureGesture(_ recognizer: UIPanGestureRecognizer) {
+            let touchLocation = recognizer.location(in: self.superview)
+            switch recognizer.state {
+            case .began:
+                self.beginningPoint = touchLocation
+                self.beginningCenter = self.center
+                if let delegate = self.delegate {
+                    delegate.stickerViewDidBeginMoving(self)
+                }
+            case .changed:
+                self.center = CGPoint(x: self.beginningCenter.x + (touchLocation.x - self.beginningPoint.x), y: self.beginningCenter.y + (touchLocation.y - self.beginningPoint.y))
+                if let delegate = self.delegate {
+                    delegate.stickerViewDidChangeMoving(self)
+                }
+            case .ended:
+                self.center = CGPoint(x: self.beginningCenter.x + (touchLocation.x - self.beginningPoint.x), y: self.beginningCenter.y + (touchLocation.y - self.beginningPoint.y))
+                if let delegate = self.delegate {
+                    delegate.stickerViewDidEndMoving(self)
+                }
+            default:
+                break
+            }
+        }
 }
 //MARK: - Configuration Set Functions
 extension StickerView{
