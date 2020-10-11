@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/SwiftStickerView.svg?style=flat)](https://cocoapods.org/pods/SwiftStickerView)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftStickerView.svg?style=flat)](https://cocoapods.org/pods/SwiftStickerView)
 
+![](https://github.com/native-mobile-app-developers/SwiftStickerView/blob/master/Example/SwiftStickerView/Images.xcassets/sample-gif.dataset/sample-gif.gif)
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -39,7 +41,11 @@ self.view.addSubview(stickerView)
 ```
 
 
-![](https://github.com/native-mobile-app-developers/SwiftStickerView/blob/master/Example/SwiftStickerView/Images.xcassets/sample-gif.dataset/sample-gif.gif)
+If you think that any information you obtained here is worth of some money and are willing to pay for it, feel free to send any amount through paypal.
+
+| Paypal | Bitcoin |
+| ------ | ------- |
+| [![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LUAUTLYBJ7XHN&currency_code=USD) | [](https://github.com/native-mobile-app-developers/SwiftStickerView/blob/master/Example/SwiftStickerView/Images.xcassets/QRCode.imageset/QRCode.png) |
 
 ## Author
 
