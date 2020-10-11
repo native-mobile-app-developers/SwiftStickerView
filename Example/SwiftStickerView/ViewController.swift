@@ -17,6 +17,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let configuration = Configuration()
         configuration.borderWidth = 2
+        configuration.buttonSize = CGSize(width: 16, height: 16)
+        
          let testView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 150, height: 100))
                testView.backgroundColor = UIColor.red
         testView.image = UIImage(named: "image")

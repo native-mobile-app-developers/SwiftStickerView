@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftStickerView'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'SwiftStickerView for view move rotate scretch.'
 
 # This description is used to generate tags and improve search results.

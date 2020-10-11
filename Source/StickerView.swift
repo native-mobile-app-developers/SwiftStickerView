@@ -328,6 +328,11 @@ extension StickerView{
         self.setupFrame(insetMarging: configuration.insetMarging,
                         borderWidth: configuration.borderWidth,
                         borderColor: configuration.boarderColor)
+        
+        for index in 0..<configuration.activeButtons.count{
+            let button = configuration.activeButtons[index]
+            configuration.activeButtons[index].buttonSize = button.buttonSize == nil ? self.configuration.buttonSize : button.buttonSize
+        }
         self.setupButtons(buttons: configuration.activeButtons)
     }
     
@@ -361,6 +366,7 @@ extension StickerView{
     
     private func setupButtons(buttons:[Button]){
         for button in buttons{
+            
             setButtonOnPosition(button: button)
         }
     }
@@ -374,7 +380,7 @@ extension StickerView{
         handlerView?.frame.size = button.buttonSize
         handlerView?.tintColor = button.tintColor
         handlerView?.isUserInteractionEnabled = true
-        handlerView?.backgroundColor = .white
+        handlerView?.backgroundColor = .clear
         
         switch button.buttonPosition {
 
