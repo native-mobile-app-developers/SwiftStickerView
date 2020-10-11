@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/SwiftStickerView.svg?style=flat)](https://cocoapods.org/pods/SwiftStickerView)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftStickerView.svg?style=flat)](https://cocoapods.org/pods/SwiftStickerView)
 
-![](https://github.com/native-mobile-app-developers/SwiftStickerView/blob/master/Example/SwiftStickerView/Images.xcassets/sample-gif.dataset/sample-gif.gif)
+![](https://github.com/native-mobile-app-developers/SwiftStickerView/blob/master/Example/SwiftStickerView/Images.xcassets/sample-gif.dataset/sample-gif.gif =300x)
 
 ## Example
 
