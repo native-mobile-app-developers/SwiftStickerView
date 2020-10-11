@@ -1,6 +1,6 @@
 # SwiftStickerView
 
-[![CI Status](https://img.shields.io/travis/sachithamh/SwiftStickerView.svg?style=flat)](https://travis-ci.org/sachithamh/SwiftStickerView)
+[![CI Status](https://img.shields.io/travis/native-mobile-app-developers/SwiftStickerView.svg?style=flat)](https://travis-ci.org/sachithamh/SwiftStickerView)
 [![Version](https://img.shields.io/cocoapods/v/SwiftStickerView.svg?style=flat)](https://cocoapods.org/pods/SwiftStickerView)
 [![License](https://img.shields.io/cocoapods/l/SwiftStickerView.svg?style=flat)](https://cocoapods.org/pods/SwiftStickerView)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftStickerView.svg?style=flat)](https://cocoapods.org/pods/SwiftStickerView)
