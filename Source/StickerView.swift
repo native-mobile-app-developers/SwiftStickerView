@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 /// Delegates
 @objc protocol StickerViewDelegate {
     @objc func stickerViewDidRemove(_ view:StickerView)
@@ -348,7 +348,7 @@ extension StickerView{
         
         for index in 0..<configuration.activeButtons.count{
             let button = configuration.activeButtons[index]
-            configuration.activeButtons[index].buttonSize = button.buttonSize == nil ? self.configuration.buttonSize : button.buttonSize
+            configuration.activeButtons[index].button.frame.size = button.isOverrideSize == false ? self.configuration.buttonSize : button.button.frame.size
         }
         self.setupButtons(buttons: configuration.activeButtons)
     }
@@ -392,12 +392,9 @@ extension StickerView{
         let origin = self.boundaryView.frame.origin
         let size = self.boundaryView.frame.size
         
-        let handlerView:UIImageView? = UIImageView()
-        handlerView?.image = button.image
-        handlerView?.frame.size = button.buttonSize
-        handlerView?.tintColor = button.tintColor
+        let handlerView:UIButton? = button.button
         handlerView?.isUserInteractionEnabled = true
-        handlerView?.backgroundColor = .clear
+        
         
         switch button.buttonPosition {
 
