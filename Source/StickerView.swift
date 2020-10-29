@@ -39,6 +39,23 @@ import Foundation
 }
 
 open class StickerView:UIView{
+    
+    var showEditingHandlers:Bool = true {
+            didSet {
+                if self.showEditingHandlers {
+                    if configuration != nil {
+                        self.contentView?.layer.borderWidth = configuration.borderWidth
+                    }else{
+                        self.contentView?.layer.borderWidth = 1
+                        
+                    }
+                }
+                else {
+                    self.contentView?.layer.borderWidth = 0
+                }
+            }
+        }
+    
     //gestures
     private lazy var removeGesture = {
         return UITapGestureRecognizer(target: self, action: #selector(removeGesture(_:)))
