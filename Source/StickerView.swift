@@ -39,22 +39,29 @@ import UIKit
 }
 
 open class StickerView:UIView{
-    
-    var showEditingHandlers:Bool = true {
+    var allHandlerViews:[UIButton] = []
+    public var showEditingHandlers:Bool = true {
             didSet {
                 if self.showEditingHandlers {
                     if configuration != nil {
-                        self.contentView?.layer.borderWidth = configuration.borderWidth
+                        self.boundaryView?.layer.borderWidth = configuration.borderWidth
                     }else{
-                        self.contentView?.layer.borderWidth = 1
+                        self.boundaryView?.layer.borderWidth = 1
                         
                     }
+                    isHandlerViews(isHidden: false)
                 }
                 else {
-                    self.contentView?.layer.borderWidth = 0
+                    self.boundaryView?.layer.borderWidth = 0
+                    isHandlerViews(isHidden: true)
                 }
             }
         }
+    private func isHandlerViews(isHidden:Bool){
+        allHandlerViews.forEach({btn in
+            btn.isHidden = isHidden
+        })
+    }
     
     //gestures
     private lazy var removeGesture = {
@@ -448,5 +455,6 @@ extension StickerView{
         
         self.addSubview(handlerView!)
         self.bringSubview(toFront:handlerView! )
+        self.allHandlerViews.append(handlerView!)
     }
 }

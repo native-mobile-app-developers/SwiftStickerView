@@ -44,15 +44,24 @@ struct Button {
 open class Configuration {
     
     var activeButtons:[Button]! = []
+    var minimumSize:CGFloat! = 16 * 4
+    public var insetMarging:CGFloat! = 16
+    public var boarderColor:UIColor! = .darkGray
+    public var borderWidth:CGFloat! = 2
+    public var buttonSize:CGSize! = CGSize(width: 28, height: 28) {
+        didSet{
+            minimumSize = buttonSize.width * 4
+        }
+    }
     
-    private let _trashButton:UIButton = {
+    private lazy var _trashButton:UIButton = {
        let button = UIButton()
         button.setImage(UIImage(systemName: "trash")!, for: .normal)
         button.frame.size = CGSize(width: 16, height: 16)
         buttonDecorator(button)
         return button
     }()
-    private let _scaleButton:UIButton = {
+    private lazy var _scaleButton:UIButton = {
        let button = UIButton()
         button.setImage(UIImage(systemName: "arrow.up.left.and.arrow.down.right")!, for: .normal)
         button.frame.size = CGSize(width: 16, height: 16)
@@ -60,7 +69,7 @@ open class Configuration {
         return button
     }()
     
-    private let _rotateButton:UIButton = {
+    private lazy var _rotateButton:UIButton = {
        let button = UIButton()
         button.setImage(UIImage(systemName: "gobackward")!, for: .normal)
         button.frame.size = CGSize(width: 16, height: 16)
@@ -68,7 +77,7 @@ open class Configuration {
         return button
     }()
     
-    private let _stretchWidthButton:UIButton = {
+    private lazy var _stretchWidthButton:UIButton = {
        let button = UIButton()
         button.setImage(UIImage(systemName: "square.fill")!, for: .normal)
         button.frame.size = CGSize(width: 16, height: 16)
@@ -76,7 +85,7 @@ open class Configuration {
         return button
     }()
     
-    private let _stretchHeightButton:UIButton = {
+    private lazy var _stretchHeightButton:UIButton = {
        let button = UIButton()
         button.setImage(UIImage(systemName: "square.fill")!, for: .normal)
         button.frame.size = CGSize(width: 16, height: 16)
@@ -84,13 +93,13 @@ open class Configuration {
         return button
     }()
     
-    private static func buttonDecorator(_ button:UIButton){
+    private func buttonDecorator(_ button:UIButton){
         button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         button.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         button.layer.shadowOpacity = 1.0
         button.layer.shadowRadius = 4.0
         button.layer.masksToBounds = false
-        button.layer.cornerRadius = 28/2
+        button.layer.cornerRadius = buttonSize.width/2
         button.backgroundColor = .white
     }
     
@@ -102,14 +111,6 @@ open class Configuration {
                                       Button(buttonPosition: .midle_bottom, buttonType: .stretch_height,button: _stretchHeightButton)]
     }
     
-    var minimumSize:CGFloat! = 16 * 4
-    public var insetMarging:CGFloat! = 16
-    public var boarderColor:UIColor! = .darkGray
-    public var borderWidth:CGFloat! = 2
-    public var buttonSize:CGSize! = CGSize(width: 28, height: 28) {
-        didSet{
-            minimumSize = buttonSize.width * 4
-        }
-    }
+
     
 }
