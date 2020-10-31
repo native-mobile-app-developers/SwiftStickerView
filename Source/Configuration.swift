@@ -16,7 +16,7 @@ enum ButtonPosition{
 }
 
 
-struct Button {
+public struct Button {
     var buttonPosition:ButtonPosition!
     var buttonType:ButtonType!
     var button:UIButton!
@@ -43,7 +43,7 @@ struct Button {
 
 open class Configuration {
     
-    var activeButtons:[Button]! = []
+    public var activeButtons:[Button]! = []
     var minimumSize:CGFloat! = 16 * 4
     public var insetMarging:CGFloat! = 16
     public var boarderColor:UIColor! = .darkGray
