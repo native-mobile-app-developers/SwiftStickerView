@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 /// Delegates
 @objc protocol StickerViewDelegate {
     @objc func stickerViewDidRemove(_ view:StickerView)
@@ -18,6 +18,7 @@ import Foundation
     @objc func stickerViewDidBeginMoving(_ stickerView: StickerView)
     @objc func stickerViewDidChangeMoving(_ stickerView: StickerView)
     @objc func stickerViewDidEndMoving(_ stickerView: StickerView)
+    @objc func stickerViewDidFlip(_ stickerView: StickerView)
 }
 
 
@@ -39,6 +40,30 @@ import Foundation
 }
 
 open class StickerView:UIView{
+    var allHandlerViews:[UIButton] = []
+    public var showEditingHandlers:Bool = true {
+            didSet {
+                if self.showEditingHandlers {
+                    if configuration != nil {
+                        self.boundaryView?.layer.borderWidth = configuration.borderWidth
+                    }else{
+                        self.boundaryView?.layer.borderWidth = 1
+                        
+                    }
+                    isHandlerViews(isHidden: false)
+                }
+                else {
+                    self.boundaryView?.layer.borderWidth = 0
+                    isHandlerViews(isHidden: true)
+                }
+            }
+        }
+    private func isHandlerViews(isHidden:Bool){
+        allHandlerViews.forEach({btn in
+            btn.isHidden = isHidden
+        })
+    }
+    
     //gestures
     private lazy var removeGesture = {
         return UITapGestureRecognizer(target: self, action: #selector(removeGesture(_:)))
@@ -70,8 +95,12 @@ open class StickerView:UIView{
         return UIPanGestureRecognizer(target: self, action: #selector(movFingureGesture(_:)))
     }()
     
+    private lazy var flipGesture = {
+            return UITapGestureRecognizer(target: self, action:#selector(handleFlipGesture(_:)))
+    }()
     
-    var delegate: StickerViewDelegate!
+    
+    var delegate: StickerViewDelegate? = nil
     private var configuration: Configuration!
     var contentView:UIView!
     var boundaryView:UIView!
@@ -320,6 +349,15 @@ extension StickerView{
                 break
             }
         }
+    
+    @objc func handleFlipGesture(_ recognizer: UITapGestureRecognizer) {
+            UIView.animate(withDuration: 0.2) {[weak self] in
+                guard let strongSelf = self else{return}
+                strongSelf.contentView.transform = strongSelf.contentView.transform.scaledBy(x: -1, y: 1)
+                
+                strongSelf.delegate?.stickerViewDidFlip(strongSelf)
+            }
+        }
 }
 //MARK: - Configuration Set Functions
 extension StickerView{
@@ -331,7 +369,7 @@ extension StickerView{
         
         for index in 0..<configuration.activeButtons.count{
             let button = configuration.activeButtons[index]
-            configuration.activeButtons[index].buttonSize = button.buttonSize == nil ? self.configuration.buttonSize : button.buttonSize
+            configuration.activeButtons[index].button.frame.size = button.isOverrideSize == false ? self.configuration.buttonSize : button.button.frame.size
         }
         self.setupButtons(buttons: configuration.activeButtons)
     }
@@ -375,12 +413,9 @@ extension StickerView{
         let origin = self.boundaryView.frame.origin
         let size = self.boundaryView.frame.size
         
-        let handlerView:UIImageView? = UIImageView()
-        handlerView?.image = button.image
-        handlerView?.frame.size = button.buttonSize
-        handlerView?.tintColor = button.tintColor
+        let handlerView:UIButton? = button.button
         handlerView?.isUserInteractionEnabled = true
-        handlerView?.backgroundColor = .clear
+        
         
         switch button.buttonPosition {
 
@@ -407,10 +442,16 @@ extension StickerView{
             handlerView?.center = CGPoint(x: origin.x + size.width/2, y: origin.y + size.height)
             handlerView?.autoresizingMask = [.flexibleTopMargin,.flexibleLeftMargin,.flexibleRightMargin,.flexibleBottomMargin]
                 break
+        case .top_right:
+            handlerView?.center = CGPoint(x: origin.x + size.width, y: origin.y )
+            handlerView?.autoresizingMask = [.flexibleLeftMargin,]
+            break
         case .none:
             return
 
 
+        
+            
         }
         
         switch button.buttonType {
@@ -427,6 +468,8 @@ extension StickerView{
             handlerView?.addGestureRecognizer(stretchWidthGesture)
         case .stretch_height:
             handlerView?.addGestureRecognizer(stretchHeightGesture)
+        case .flip:
+            handlerView?.addGestureRecognizer(flipGesture)
         default :
             
             break
@@ -434,5 +477,6 @@ extension StickerView{
         
         self.addSubview(handlerView!)
         self.bringSubview(toFront:handlerView! )
+        self.allHandlerViews.append(handlerView!)
     }
 }
