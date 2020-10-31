@@ -20,7 +20,7 @@ public struct Button {
     var buttonPosition:ButtonPosition!
     var buttonType:ButtonType!
     public var button:UIButton!
-    var isOverrideSize:Bool!
+    public var isOverrideSize:Bool!
     private let _defaultbutton:UIButton = {
        let button = UIButton()
         button.setImage(UIImage(systemName: "square.fill")!, for: .normal)
