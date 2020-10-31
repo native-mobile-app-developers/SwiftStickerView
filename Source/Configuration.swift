@@ -12,7 +12,7 @@ enum ButtonType {
 }
 
 enum ButtonPosition{
-    case top_left,bottom_right,bottom_left,midle_left,midle_bottom
+    case top_left,bottom_right,bottom_left,midle_left,midle_bottom,top_right
 }
 
 
@@ -92,6 +92,14 @@ open class Configuration {
         buttonDecorator(button)
         return button
     }()
+    private lazy var _flipImageButton:UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(systemName: "flip.horizontal.fill")!, for: .normal)
+        button.frame.size = CGSize(width: 16, height: 16)
+        buttonDecorator(button)
+        return button
+    }()
+    
     
     private func buttonDecorator(_ button:UIButton){
         button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
@@ -108,7 +116,7 @@ open class Configuration {
                                       Button(buttonPosition: .bottom_right, buttonType: .scale,button: _scaleButton),
                                       Button(buttonPosition: .bottom_left, buttonType: .rotate,button: _rotateButton),
                                       Button(buttonPosition: .midle_left, buttonType: .stretch_width,button: _stretchWidthButton),
-                                      Button(buttonPosition: .midle_bottom, buttonType: .stretch_height,button: _stretchHeightButton)]
+                                      Button(buttonPosition: .midle_bottom, buttonType: .stretch_height,button: _stretchHeightButton),Button(buttonPosition: .top_right, buttonType: .flip,button: _flipImageButton)]
     }
     
 

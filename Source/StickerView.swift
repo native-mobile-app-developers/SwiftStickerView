@@ -18,6 +18,7 @@ import UIKit
     @objc func stickerViewDidBeginMoving(_ stickerView: StickerView)
     @objc func stickerViewDidChangeMoving(_ stickerView: StickerView)
     @objc func stickerViewDidEndMoving(_ stickerView: StickerView)
+    @objc func stickerViewDidFlip(_ stickerView: StickerView)
 }
 
 
@@ -94,8 +95,12 @@ open class StickerView:UIView{
         return UIPanGestureRecognizer(target: self, action: #selector(movFingureGesture(_:)))
     }()
     
+    private lazy var flipGesture = {
+            return UITapGestureRecognizer(target: self, action:#selector(handleFlipGesture(_:)))
+    }()
     
-    var delegate: StickerViewDelegate!
+    
+    var delegate: StickerViewDelegate? = nil
     private var configuration: Configuration!
     var contentView:UIView!
     var boundaryView:UIView!
@@ -344,6 +349,15 @@ extension StickerView{
                 break
             }
         }
+    
+    @objc func handleFlipGesture(_ recognizer: UITapGestureRecognizer) {
+            UIView.animate(withDuration: 0.2) {[weak self] in
+                guard let strongSelf = self else{return}
+                strongSelf.contentView.transform = strongSelf.contentView.transform.scaledBy(x: -1, y: 1)
+                
+                strongSelf.delegate?.stickerViewDidFlip(strongSelf)
+            }
+        }
 }
 //MARK: - Configuration Set Functions
 extension StickerView{
@@ -428,10 +442,16 @@ extension StickerView{
             handlerView?.center = CGPoint(x: origin.x + size.width/2, y: origin.y + size.height)
             handlerView?.autoresizingMask = [.flexibleTopMargin,.flexibleLeftMargin,.flexibleRightMargin,.flexibleBottomMargin]
                 break
+        case .top_right:
+            handlerView?.center = CGPoint(x: origin.x + size.width, y: origin.y )
+            handlerView?.autoresizingMask = [.flexibleLeftMargin,]
+            break
         case .none:
             return
 
 
+        
+            
         }
         
         switch button.buttonType {
@@ -448,6 +468,8 @@ extension StickerView{
             handlerView?.addGestureRecognizer(stretchWidthGesture)
         case .stretch_height:
             handlerView?.addGestureRecognizer(stretchHeightGesture)
+        case .flip:
+            handlerView?.addGestureRecognizer(flipGesture)
         default :
             
             break
