@@ -19,7 +19,7 @@ enum ButtonPosition{
 public struct Button {
     var buttonPosition:ButtonPosition!
     var buttonType:ButtonType!
-    var button:UIButton!
+    public var button:UIButton!
     var isOverrideSize:Bool!
     private let _defaultbutton:UIButton = {
        let button = UIButton()
