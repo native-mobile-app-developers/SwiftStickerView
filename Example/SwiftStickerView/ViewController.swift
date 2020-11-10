@@ -24,6 +24,7 @@ class ViewController: UIViewController {
                testView.backgroundColor = UIColor.red
         testView.image = UIImage(named: "image")
         stickerView = StickerView.init(contentView: testView, configuration: configuration)
+        
         stickerView.center = self.view.center
         self.view.addSubview(stickerView)
         

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 /// Delegates
-@objc protocol StickerViewDelegate {
+@objc public protocol StickerViewDelegate {
     @objc func stickerViewDidRemove(_ view:StickerView)
     @objc func stickerViewDidBeginScale(_ view:StickerView)
     @objc func stickerViewDidChangeScale(_ view:StickerView)
@@ -100,7 +100,7 @@ open class StickerView:UIView{
     }()
     
     
-    var delegate: StickerViewDelegate? = nil
+    public var delegate: StickerViewDelegate? = nil
     private var configuration: Configuration!
     var contentView:UIView!
     var boundaryView:UIView!
