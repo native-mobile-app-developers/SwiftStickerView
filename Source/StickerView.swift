@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 /// Delegates
 @objc public protocol StickerViewDelegate {
-    @objc func stickerViewDidRemove(_ view:StickerView)
-    @objc func stickerViewDidBeginScale(_ view:StickerView)
-    @objc func stickerViewDidChangeScale(_ view:StickerView)
+    @objc func stickerViewDidRemove(_ stickerView:StickerView)
+    @objc func stickerViewDidBeginScale(_ stickerView:StickerView)
+    @objc func stickerViewDidChangeScale(_ stickerView:StickerView)
     @objc func stickerViewDidBeginRotating(_ stickerView: StickerView)
     @objc func stickerViewDidChangeRotating(_ stickerView: StickerView)
     @objc func stickerViewDidEndRotating(_ stickerView: StickerView)
@@ -323,7 +323,33 @@ extension StickerView{
         }
     }
     @objc func rotateFingureGesture(_ recognizer: UIRotationGestureRecognizer) {
-        self.transform = self.transform.rotated(by: recognizer.rotation)
+        switch recognizer.state {
+        
+        case .possible:
+            break
+        case .began:
+            if let delegate = self.delegate {
+                delegate.stickerViewDidBeginRotating(self)
+            }
+            self.transform = self.transform.rotated(by: recognizer.rotation)
+            break
+        case .changed:
+            self.transform = self.transform.rotated(by: recognizer.rotation)
+            if let delegate = self.delegate {
+                delegate.stickerViewDidChangeRotating(self)
+            }
+            break
+        case .ended:
+            if let delegate = self.delegate {
+                delegate.stickerViewDidEndRotating(self)
+            }
+            break
+        case .cancelled:
+            break
+        case .failed:
+            break
+        }
+        
         recognizer.rotation = 0
     }
     @objc func movFingureGesture(_ recognizer: UIPanGestureRecognizer) {
