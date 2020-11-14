@@ -108,7 +108,7 @@ open class StickerView:UIView{
     
     public var delegate: StickerViewDelegate? = nil
     private var configuration: Configuration!
-    var contentView:UIView!
+    public var contentView:UIView!
     var boundaryView:UIView!
     
     /**
