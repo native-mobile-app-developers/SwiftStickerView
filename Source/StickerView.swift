@@ -18,7 +18,9 @@ import UIKit
     @objc func stickerViewDidBeginMoving(_ stickerView: StickerView)
     @objc func stickerViewDidChangeMoving(_ stickerView: StickerView)
     @objc func stickerViewDidEndMoving(_ stickerView: StickerView)
+    @objc func stickerViewDidBeginFlip(_ stickerView: StickerView)
     @objc func stickerViewDidFlip(_ stickerView: StickerView)
+    @objc func stickerViewSelect(_ stickerView: StickerView)
 }
 
 
@@ -76,6 +78,10 @@ open class StickerView:UIView{
         return UIPinchGestureRecognizer(target: self, action: #selector(scaleFingureGesture(_:)))
     }()
     
+    private lazy var selectFingureGesture = {
+        return UITapGestureRecognizer(target: self, action: #selector(selectFingureGesture(_:)))
+    }()
+    
     private lazy var rotateGesture = {
         return UIPanGestureRecognizer(target: self, action: #selector(rotateGesture(_:)))
     }()
@@ -130,6 +136,7 @@ open class StickerView:UIView{
         self.addGestureRecognizer(scaleFingureGesture)
         self.addGestureRecognizer(rotateFingureGesture)
         self.addGestureRecognizer(movFingureGesture)
+        self.addGestureRecognizer(selectFingureGesture)
         // Setup content view
         self.contentView = contentView
         self.contentView.center = CGRectGetCenter(self.bounds)
@@ -377,6 +384,7 @@ extension StickerView{
         }
     
     @objc func handleFlipGesture(_ recognizer: UITapGestureRecognizer) {
+            delegate?.stickerViewDidBeginFlip(self)
             UIView.animate(withDuration: 0.2) {[weak self] in
                 guard let strongSelf = self else{return}
                 strongSelf.contentView.transform = strongSelf.contentView.transform.scaledBy(x: -1, y: 1)
@@ -384,6 +392,9 @@ extension StickerView{
                 strongSelf.delegate?.stickerViewDidFlip(strongSelf)
             }
         }
+    @objc func selectFingureGesture(_ recognizer: UITapGestureRecognizer){
+        delegate?.stickerViewSelect(self)
+    }
 }
 //MARK: - Configuration Set Functions
 extension StickerView{

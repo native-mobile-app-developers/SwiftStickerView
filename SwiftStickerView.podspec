@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftStickerView'
-  s.version          = '2.0.5'
+  s.version          = '2.0.6'
   s.summary          = 'SwiftStickerView for view move rotate scretch.'
   s.requires_arc = true
 
